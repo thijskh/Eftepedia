@@ -52,7 +52,7 @@ class EftepediaRecentChangesTag {
     }
     
     // Daadwerkelijke rijen ophalen.
-    $dbr = wfGetDB( DB_SLAVE );  
+    $dbr = wfGetDB( DB_REPLICA );  
     $sql = <<<sql
       select
         page_title,

@@ -10,7 +10,7 @@ class UpdateReaderPageTableJob extends Job {
    * @return bool
    */
   public function run() {
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
     
     //$title = $this->title->getDBkey();
     $title = $this->params['title'];

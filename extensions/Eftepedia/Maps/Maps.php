@@ -18,7 +18,7 @@ class EftepediaMaps {
   private static function getLandmarks($title) {
     $landmarks = array();
   
-    $dbr = wfGetDB( DB_SLAVE );         
+    $dbr = wfGetDB( DB_REPLICA );         
 
     $result = $dbr->select(
       array('t'=>'geo_tags', 'p'=>'page'), // table

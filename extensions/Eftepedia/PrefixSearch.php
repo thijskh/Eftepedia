@@ -33,7 +33,7 @@ class EftepediaPrefixSearch
 		
 		// Selecteer de pagina's om voor te stellen. Extra: Join de redirect target erbij, en
 		// selecteer wat meer items (20 ipv 10), om de lijst uit te kunnen dunnen.
-		$dbr = wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_REPLICA );
 
 		$result = $dbr->select(
 			array( 'titlekey', 'page', 'redirect' ),
