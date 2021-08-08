@@ -24,4 +24,3 @@ class EftepediaLocalUrl
 }
 $wgHooks['GetLocalURL'][] = 'EftepediaLocalUrl::onGetLocalURL';
 
-?>

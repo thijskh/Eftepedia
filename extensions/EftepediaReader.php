@@ -146,96 +146,10 @@ function hideRedLinks( $skin, $target, $options, &$text, &$attribs, &$ret )
   }
 		
 	return false;
-  /*
-  // Stuk hieronder is niet meer nodig, omdat ongeldige pagina's al gefilterd zijn in de database.
-
-
-	if ($target->getPartialURL() === '' && $target->getFragment() !== '')
-	{
-		// Interne link/anchor binnen de pagina.
-		return true;
-	}
-	
-	if ($target->mNamespace == 14 /*Category*\)
-	{
-    if ($target->isKnown() === false)
-    {
-		  $ret = redLink($text);
-    }
-		return $target->isKnown();
-	}
-  
-	if ($target->mNamespace == NS_MAIN && isValidGeelVersion($target) === false)
-	{
-		// Versie is nog helemaal niet goedgekeurd, of heeft nog geen quality versie.
-		$ret = redLink($text);
-		return false;
-	}
-
-	if (in_array($target->mNamespace, array(NS_MAIN, NS_FILE, NS_SPECIAL)) === false)
-	{
-		// Links naar pagina's in andere name spaces dan toegestaan. 
-    // Geen idee wat hier aan de hand is, maar om te voorkomen dat er ineens user names
-    // online staan, wordt er helemaal niets geoutput.
-		$ret = '';
-		return false;
-	}
-
-	if ($target->isKnown())
-  {
-    return true;
-  }
-  
-	//if ($target->getArticleId() > 0)
-	//	return true;
-	
-	if (is_array($text))
-		$ret = $text['title'];
-	else
-		$ret = $text;
-		
-	return false;*/
 }
 
 $wgHooks['LinkEnd'][] = 'hideRedLinks';
 
-/* *********************************************************************** **
-   Hook om ervoor te zorgen dat de stable versie van een artikel wordt bekeken, en 
-   niet de laatste versie. FlaggedRevs lijkt niet niet helemaal goed te doen als het
-   eerste controle-level nog geen quality-level is.
-   Wordt gebruikt bij het laden van de pagina in 'title', niet voor links e.d.
-** *********************************************************************** */
-/*function efHooks_ArticleFromTitle( &$title, &$article ) {
-	global $wgTitle;
-	global $protection;
-	global $wgReaderHomePage;
-	
-	// Als de pagina een redirect is, zoek dan de pagina op waarnaar deze doorlinkt. 
-	if ( $title->isRedirect() ) {
-    $redirectArticle = new Article( $title, 0 );
-    //var_dump($redirectArticle->getContent()); exit;
-		$newtitle = $redirectArticle->getRedirectTarget();
-	} else {
-		$newtitle = $title;
-	}
-	// Redirects to some special pages are not permitted
-	if ( $newtitle instanceOf Title && $newtitle->isValidRedirectTarget() ) 
-	{
-		$sv = FlaggedRevision::determineStable($newtitle, FR_MASTER, array(), 'quality');
-
-		// Geen stable versie gevonden. Dan gewoon doorgaan. Die pagina's worden 
-		// tegengehouden door isAllowedPage
-		if ($sv === null)
-			return true;
-
-		// Overrule de default versie door een specifiek acticle te laden met 
-		// het id van de goedgekeurde versie.
-		$article = new Article( $title, $sv->getRevision()->getId());
-		return true;
-	}
-	return true;
-}*/
-//$wgHooks['ArticleFromTitle'][] = 'efHooks_ArticleFromTitle';
 
 /* *********************************************************************** **
   Prefix-search proberen te beinvloeden, om zo de suggesties-lijst van het 
@@ -247,79 +161,8 @@ function efHooks_PrefixSearchBackend( $ns, $search, $limit, &$results ) {
 	return false;
 }
 
-//$wgHooks['PrefixSearchBackend'][] = 'efHooks_PrefixSearchBackend';
-
-/* *********************************************************************** **
-Random page alleen goedgekeurde pagina's
-** *********************************************************************** */
-/* class EftepediaRandomPage extends RandomPage{
-	public function __construct( $name = 'Randompage' ){
-		parent::__construct( $name );
-	}
-	
-	protected function getQueryInfo( $randstr ) {
-		$redirect = $this->isRedirect() ? 1 : 0;
-
-		$params = array(
-			'tables' => array( 'page', 'flaggedpages' ),
-			'fields' => array( 'page_title', 'page_namespace' ),
-			'conds' => array_merge( array(
-				'page_namespace' => $this->getNamespaces(),
-				'page_is_redirect' => $redirect,
-				// 'page_random >= ' . $randstr,
-				'page_id = fp_page_id',
-				'fp_quality >= 1'
-			), $this->extra ),
-			'options' => array(
-				'ORDER BY' => 'rand()',
-				//'ORDER BY' => 'page_random',
-				//'USE INDEX' => 'page_random',
-				'LIMIT' => 1,
-			),
-			'join_conds' => array()
-		);
-		
-		return $params;
-	}
-}*/
-
-function efHooks_SpecialPage_initList( &$aSpecialPages ) {
-	//$aSpecialPages['Randompage'] = 'EftepediaRandomPage';
-  //$aSpecialPages['Allpages'] = 'EftepediaSpecialAllPages';
-
-	return true;
-}
-
-//$wgHooks['SpecialPage_initList'][] = 'efHooks_SpecialPage_initList';
-
-/* *********************************************************************** **
-Soort van eigen caching ging fout na upgrade naar 1.20. Nu maar even uitgeschakeld.
-** *********************************************************************** */
-
 function efHooks_ArticleViewHeader(&$article, &$outputDone, &$useParserCache)
 {
-/*	global $wgUseFileCache;
-	if ($wgUseFileCache === false)
-		return true;
-		
-	$called = true;
-	
-	if ( $article->isFileCacheable() ) {
-		$cache = new HTMLFileCache( $article->getTitle() );
-		if ( $cache->isFileCacheGood(  ) ) {
-			wfDebug( "Article::tryFileCache(): about to load file\n" );
-			$cache->loadFromFileCache();
-			return true;
-		} else {
-			wfDebug( "Article::tryFileCache(): starting buffer\n" );
-			ob_start( array( &$cache, 'saveToFileCache' ) );
-		}
-	} else {
-		wfDebug( "Article::tryFileCache(): not cacheable\n" );
-	}
-
-	$useParserCache = true;
-	return true;*/
 
   global $wgUseFileCache;
 	if ($wgUseFileCache)
