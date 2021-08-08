@@ -1,0 +1,13 @@
+// Contentbreedte
+$bodyWidth: 900px;
+$bodyTopMargin: 25px;
+$bodyBottomMargin: $bodyTopMargin;
+$bodyLeftMargin: 50px;
+$bodyRightMargin: 50px;
+$bodyRightPadding: 220px;
+$bodyRightWideMargin: $bodyRightPadding + $bodyRightMargin;
+
+// Gebruik onderstaande waarden.
+$maxContentWidth: $bodyWidth - $bodyLeftMargin - $bodyRightMargin;
+$normalContentWidth: $bodyWidth - $bodyLeftmargin - $bodyRightWideMargin;
+

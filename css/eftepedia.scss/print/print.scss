@@ -1,0 +1,15 @@
+#x{x:x;/*=PRINT=*/}
+@media print {
+  #topbar,
+  nav.portals,
+  #mw-data-after-content 
+  {
+    display: none;
+  }
+  
+  #siteSub {
+    display: block;
+    padding-bottom: 0.5em;
+  }
+  
+}

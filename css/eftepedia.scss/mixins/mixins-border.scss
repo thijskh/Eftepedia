@@ -1,0 +1,25 @@
+// Ronde hoekjes instellen.
+@mixin rounded-corner($corner: "", $size:"") 
+{
+  border#{if($corner == "", "", "-")}#{$corner}-radius: #{if($size == "", "10px", $size)};
+}
+
+// Border voor afbeeldingen
+@mixin imageborder {
+  border: 1px solid #ccc;
+  border-color: #fff #ccc #ccc #fff;
+  border-radius: 10px;
+}
+
+// Volledige rand met ronde hoekjes, voor navigatieblokken.
+@mixin full-border {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+// Ander box model instellen waarbij de border en padding bij de breedte worden geteld.
+@mixin border-box {
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box; 
+}

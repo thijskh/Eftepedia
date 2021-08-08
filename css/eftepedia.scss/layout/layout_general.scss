@@ -1,0 +1,285 @@
+#x{x:x;/*=LAYOUT_GENERAL=*/}
+html.ns-file {
+  h1 {
+    display: none;
+  }
+}
+
+a {
+  font-weight: 500;
+  text-decoration: none;
+  color: $color-link;
+}
+
+.redlink {
+  //font-weight: 500;
+  color: #CE2A14;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+a:visited {
+  color: $color-link-visited;
+}
+
+tbody,
+img {
+  vertical-align: middle;
+}
+
+th,
+td {
+  vertical-align: top;
+}
+
+#siteSub,
+#contentSub {
+  display: none;
+}
+
+html, body {
+  height: 100%;  
+  color: #333;
+}
+
+#globalWrapper {
+  position: relative;
+}
+
+#bodyContent .mainContent {
+  &:after {
+    content: "";
+    display: block;
+    // Zorgen dat content wordt uitgerekt tot onder de laatste gefloate afbeelding.
+    clear: both;
+  }
+}
+
+//.thumb.tright {
+//    @include rounded-corner(top-left);
+//}
+
+body {
+  @include font-content;
+  background: $backgroundpath repeat #eee 0 0;
+}
+
+b, 
+strong,
+th {
+  @include font-content-bold;
+}
+
+i, em {
+  font-style: italic;
+}
+
+#globalWrapper {
+  width: $bodyWidth;
+  margin: 0 auto;
+  min-height: 100%;  
+}
+
+#topbar {
+  margin: 10px 0;
+  position: relative;
+
+  .topbar {
+    min-height: 100px;
+    @include gradient-geel;
+    border-radius: 10px;
+    border: 1px solid #FF9A00;
+  }
+}
+
+$logowidth: 169px;
+$logoheight: 100px;
+$logofactor: 0.8; //0.4;
+$logowidth: $logowidth * $logofactor;
+$logoheight: $logoheight * $logofactor;
+
+#logo {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  background-image: $logopath;
+  //width: 131px;
+  //height: 103px;
+  width: $logowidth;
+  height: $logoheight;
+  background-size: 100% 100%;
+  
+  @include border-box;
+  a {
+    display: block;
+    height: 100%;
+  }
+}
+
+.nomobile {
+  @include respond-to(handhelds)
+  {
+    display: none;
+  }
+}
+
+#sitename {
+  //display: none;
+  position: absolute;
+  top: 29px;
+  left: 180px;
+  margin: 0 auto;
+  width: 221px;
+  height: 66px;
+  color: #111;
+  @include font-sitename;
+  
+  @include respond-to(medium-screens)
+  {
+    top: 26px;
+    left: 80px;
+    font-size: 20pt;
+  }
+  @include respond-to(handhelds)
+  {
+    display: none;
+/*    top: 10px;
+    right: 10px;
+    font-size: 16pt;*/
+  }
+  
+  a {
+    color: #111;
+    text-decoration: none;
+    display: inline-block;
+    &:hover {
+      border-bottom: 1px solid $color-dark-yellow;
+    }
+  }
+}
+
+#column-content {
+  background-color: white;
+  padding: $bodyTopMargin $bodyRightWideMargin $bodyBottomMargin $bodyLeftMargin;
+}
+
+.printfooter {
+  display: none;
+}
+
+.pagefooter {
+  padding: 1em 50px;
+}
+
+h1#firstHeading {
+  @include wide-block;
+  margin-bottom: 1em;
+}
+
+.floatleft > a.image {
+  display: inline-block;
+  padding: 0.3em 10px 0.5em 0;
+}
+
+.toctoggle {
+  display: none;
+}
+
+.actieknop {
+  @include gradient-geel;
+  width: 150px;
+  border: 1px solid #cc9900;
+}
+.actie {
+  width: 152px;
+  text-align: center;
+}
+.actieknop,
+.actieknop a:after{
+  @include rounded-corner("");
+}
+.actieknop a{
+  display: inline-block;
+  text-decoration: none;
+  font-variant: small-caps;
+  font-size: large;
+  height: 35px;
+  line-height: 35px;
+  padding: 0 8px;
+  color: black;
+  position: relative;
+
+  @include transition("color 0.4s ease-in-out");
+
+  &:hover {
+    color: #696969;
+    @include transition("color 0.2s ease-in-out");
+  }
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: $buttonpath;
+    background-size: 100% 100%;
+    opacity: 0;
+    @include transition("opacity 0.2s ease-in-out");
+  }
+  &:hover:after {
+    opacity: 0.7;
+    @include transition("opacity 0.2s ease-in-out");
+  }
+  
+  &::before {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 20px;
+    top: 7px;
+    left: -2px;
+    border-left: 1px solid #BFAE82;
+  }
+  &:first-child {
+    padding-left: 18px;
+  }
+
+  &:last-child {
+    padding-right: 18px;
+  }
+
+  &:first-child:before {
+    display: none;
+  }
+
+}
+.actieklein {
+  transform: scale(0.75,0.75);
+}
+.boektemplate {
+ float:right; border: 1px grey solid; padding-left: 1em; padding-right: 1em; border-radius: 10px;
+ text-align: center;
+}
+.boektemplate a {
+  color: #2f4f4f;
+  text-decoration: none;
+  font-variant: small-caps;
+  vertical-align: text-top;
+}
+.boektemplate:hover {
+  background-color: white;
+}
+.boektemplateinvers {
+  border-color: white;
+}
+.boektemplateinvers a {
+  color: white;
+}
+.boektemplateinvers:hover a {
+  color: black;
+}

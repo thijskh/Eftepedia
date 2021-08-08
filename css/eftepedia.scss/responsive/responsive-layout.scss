@@ -1,0 +1,121 @@
+#x{x:x;/*=RESPONSIVE_LAYOUT=*/}
+// Style voor kleine en medium apparaten (telefoons en tablets)
+@include respond-to(handhelds-and-medium-screens){
+
+  // Generieke, schaalbare breedte.
+  body {
+    width: 100%;
+
+    #globalWrapper {
+      width: 100%;
+      margin: 0;
+
+      #column-content {
+        @include rem(padding, 2);
+      }
+    }
+  }
+  
+  // Logo kleiner maken
+  #logo {
+    width: ($logowidth / 2);
+    height: ($logoheight / 2);
+    bottom: auto;
+    top: 10px;
+  }
+  
+  // Topbar niet los en afgerond, maar vast, hoekig en schermvullend.
+  #topbar {
+    margin: 0;
+      
+    .topbar {
+      border-radius: 0;
+      border-width: 0 0 1px 0;
+      top: 0;
+    }
+  }
+    
+}
+
+@include respond-to(handhelds-and-medium-screens) {
+  img {
+    // Experiment. Dit moet zorgen dat afbeeldingen meeschalen op mobiel.
+    max-width: 100% !important;
+    height: auto !important;
+  }
+}
+// Style voor kleine apparaten (telefoons)
+@include respond-to(handhelds) {
+  img.icon,
+  #contentSub img,
+  #editform img
+  {
+    width: auto;
+    height: auto;
+  }
+  
+  // Enkele admin tools. 
+  html.admin #contentSub #mw-fr-revisiontag {
+    position: static;
+  }
+  
+  // Editbuttons wat ruimte geven.
+  #editform .mw-toolbar-editbutton {
+    padding: 0.5rem;
+  }
+  
+  .thumb.tright .infobox.vcard {
+    width: 100%;
+  }
+  
+  .thumb.tright,
+  .thumb.tleft,
+  .floatright,
+  .floatleft {
+    float: left;
+    clear: left;
+    border: 1px solid white;
+    border-width: 0 1em 0.5em 0;
+  }
+  
+  // Zorgen dat bij erg brede afbeeldingen tenminste de caption binnen beeld blijft.
+  .thumbinner {
+    max-width: 100%;
+    overflow: visible;
+    margin: 0 0 0.3em 0; // Iets meer marge
+  }
+  
+  // 'Eftepedia'-link in menu, en de 'Zoeken'-knop verbergen. Neemt ruimte in 
+  // en is niet nodig. Icoon en footer linken ook al naar Eftepedia, en de 
+  // 'OK/Ga'-knop voldoet meestal voor zoeken.
+  // Op de meeste telefoons zal dit in landscape-mode bovendien alweer zichtbaar worden.
+  .navbar a.nav-homepage,
+  #mw-searchButton {
+    display: none;
+  }
+  
+  html.ns-category {
+    #mw-subcategories,
+    #mw-pages {
+      td {
+        // Zorgt dat de blokken zicht niets meer aantrekken van de in MediaWiki
+        // hardcoded breedte van 33.3% en onder elkaar komen te staan (tenzij 
+        // ze naast elkaar passen. Werkt helaas niet op Windows Phone 7.
+        display: inline;
+      }
+    }
+  }
+
+  // Navigatie-blok-kopjes boven een linkjes-blok zetten, zodat dit efficienter 
+  // met de ruimte om gaat.
+  table.navigatie {
+    table.inner {
+      th,
+      td {
+        display: block;
+        // Iets grotere regelafstand, zodat het tap-baar is.
+        line-height: 2em;
+      }
+    }
+  }
+}

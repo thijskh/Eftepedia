@@ -1,0 +1,33 @@
+#x{x:x;/*=LAYOUT_SEARCH=*/}
+#searchbar {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+  
+  label {
+    display: none;
+  }
+  
+
+  form {
+    input[type="text"] {
+      border: 1px solid #FF9A00;
+      border-radius: 5px;
+      width: 10em;
+    }
+  }
+}
+
+@include respond-to(handhelds-and-medium-screens) {
+  .suggestions-results a .suggestions-result {
+    line-height: 2em;
+  }
+}
+
+@include respond-to(handhelds) {
+/*
+	#searchbar {
+	top: auto;
+	bottom: 10px;
+}*/
+}

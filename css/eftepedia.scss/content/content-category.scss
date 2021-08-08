@@ -1,0 +1,31 @@
+#x{x:x;/*=CONTENT-CATEGORY=*/}
+html.ns-category {
+  #mw-subcategories,
+  #mw-pages {
+    @include wide-block;
+    p {
+      display: none;
+    }
+    
+    td,
+    .mw-content-ltr {
+      table {
+        // Mediawiki genereert geen container-tabel als er maar 1 kolom is. 
+        // Daarom een marge op de mw_content_ltr parent, die in de table weer wordt opgeheven.
+        @include rem(margin-left, -1.5);
+      }
+      position: relative;
+      @include rem(padding-left, 1.5);
+      @include border-box;
+    }
+    
+    td {
+      vertical-align: top;
+    }
+    
+    h3 {
+     @include indexletter;
+     @include rem(margin-left, -1.5rem);
+    }
+  }
+} 

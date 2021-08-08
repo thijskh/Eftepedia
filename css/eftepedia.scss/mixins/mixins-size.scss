@@ -1,0 +1,32 @@
+ @function strip-unit($num) {
+  @return $num / ($num * 0 + 1);
+}
+ 
+@mixin rem($property, $values...) {
+  $max: length($values);
+ 
+  @for $i from 1 through $max {
+    $value: strip-unit(nth($values, $i));
+ 
+    // If the value is '0' don't output the unit.
+    @if $value == 0 {
+      $pxValues: #{$pxValues $value * 16 * $root-font-factor};
+      $remValues: #{$remValues $value * 1};
+    }
+ 
+    // Else do output the unit.
+    @else {
+      $pxValues: #{$pxValues $value * 16 * $root-font-factor}px;
+      $remValues: #{$remValues $value * 1}rem;
+    }
+ 
+    @if $i < $max {
+      $pxValues: #{$pxValues + " "};
+      $remValues: #{$remValues + " "};
+    }
+  }
+ 
+  #{$property}: $pxValues;
+  #{$property}: $remValues;
+}
+ 

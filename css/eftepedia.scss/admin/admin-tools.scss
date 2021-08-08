@@ -1,0 +1,38 @@
+#x{x:x;/*=ADMIN-TOOLS=*/}
+#sitename {
+  display: none;
+}
+    
+#column-content {
+  position: relative;
+}
+
+#contentSub {
+  display: block;
+  
+  #mw-fr-revisiontag {
+    position: absolute;
+    top: 2em;
+    right: 1em;
+    border: 1px solid #ccc;
+    padding: 0.3em;
+  }
+  margin-bottom: 1em;
+}
+
+@include respond-to(handhelds) {
+  #mw-fr-reviewform {
+    label {
+      &:before { 
+        content:"\A"; white-space:pre; 
+      }
+      &:after {
+        display: block;
+        width: 20em;
+      }
+    }
+    select {
+      min-width: 10em;
+    }
+  }
+}

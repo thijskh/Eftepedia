@@ -1,0 +1,104 @@
+#x{x:x;/*=CONTENT-NAVIGATIE=*/}
+#mw-content-text .navigatie .blurb p {
+  padding-bottom: 0;
+}
+
+.column-news::before,
+.column-changes::before {
+  content: '';
+  display: block;
+  overflow: hidden;
+  width: 15em;
+}
+
+@include respond-to(handhelds-and-medium-screens)
+{
+  table.navigatie.newscontainer {
+    .column-news,
+    .column-changes {
+      display: block;
+    }
+    .floatright,
+    .floatleft {
+      position: relative;
+      float: left;
+      margin: 0;
+      // Border i.p.v. padding, (en z-index) om eventuele opsommings-blokjes te verbergen
+      // die anders heel lelijk op de rand van de foto zouden staan.
+      z-index: 2;
+      border: 1px solid white;
+      border-width: 0 1em 0.5em 0;
+      
+      a {
+        padding: 0;
+      }
+    }
+    
+    // ul's staan op display-block, zodat de puntjes beter uitlijnen. Dat zorgt er tevens voor dat ze in veel gevallen zullen wrappen onder
+    // een afbeelding waar ze naast staan. Op de voorpagina willen we dat niet. Zoveel mogelijk naast elkaar, en als het niet bevalt
+    // dan expliciet een {{clear left mobiel}} invoegen ofzo
+    .floatleft + ul,
+    .floatright + ul {
+      display: block;
+    }
+  }
+}
+
+@include respond-to(medium-and-wide-screens)
+{
+  table.navigatie.newscontainer {
+    .floatright {
+      float: right;
+    }
+    .floatleft {
+      float: left;
+    }
+  }
+}
+
+@include respond-to(wide-screens)
+{
+  table.navigatie.newscontainer {
+    .column-news {
+      width: 70%;
+    }
+    .column-changes {
+      width: 30%;
+    }
+  }
+}
+
+@include respond-to(medium-and-wide-screens) {
+  table.navigatie.newscontainer {
+    .blurb {
+      @include font-heading;
+      font-size: 112%;
+    }
+
+    .news {
+      width: 100%;
+      .contindent {
+        padding-left: 0.8rem;
+      }
+      .floatright {
+        margin-right: 0;
+      }
+      .floatleft {
+        margin-left: 0.8rem;
+        border-right: 1.2rem solid transparent;
+      }
+      td {
+        position: relative;
+        padding-right: 0.8rem;
+      }
+      th {
+        @include rounded-corner;
+        @include font-heading;
+        border-top: 1px solid #ffb801;
+        padding: 0.2rem 0.8rem 0.3rem;
+        font-size: 120%;
+        
+      }
+    }
+  }
+}

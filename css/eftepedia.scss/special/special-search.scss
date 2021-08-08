@@ -1,0 +1,27 @@
+#x{x:x;/*=SPECIAL_SEARCH=*/}
+  #mw-searchoptions {
+    display: none;
+  }
+  
+  ul.mw-search-results {
+    li {
+      @include list-item-undo;
+      &:before {
+        display: none;
+      }
+    }
+    
+    .searchmatch {
+      font-weight: bold;
+      //border-bottom: 1px dotted blue;
+      line-height: 90%;
+    }
+    
+    .mw-search-result-data {
+      display: none;
+    }
+    
+    .searchresult {
+      padding-bottom: 1em;
+    }
+  }

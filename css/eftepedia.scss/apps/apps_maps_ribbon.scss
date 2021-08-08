@@ -1,0 +1,19 @@
+#x{x:x;/*=APPS_MAPS_RIBBON=*/}
+.ribbon {
+  position: absolute;
+  top: -40px;
+  left: -20px;
+  border: 2px solid #eee;
+  box-shadow: 5px 5px 5px #333;
+  
+  background: #869bc7;
+  color: #fff;
+  padding: 0.2em 1em;
+  border-radius: 1em;
+  
+  opacity: 0.9;
+}
+
+.ribbon-content {
+  white-space: nowrap;
+}

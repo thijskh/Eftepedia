@@ -1,0 +1,308 @@
+#x{x:x;/*=CONTENT-TEXT=*/}
+.skiplink {
+  position: absolute;
+  top: 1em;
+  left: -2000em;
+  padding: 1em;
+  z-index: 1000;
+}
+.skiplink:focus,
+.skiplink:active {
+  left: 1em;
+  background-color: #fff;
+  color: #000;
+}
+#logo {
+  font-size: 0;
+}
+p {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+#mw-fr-revisiontag-old {
+  display: none;
+}
+
+.mainContent {
+  h2, h3, h4, h5, h6 {
+    &::before {
+      content: "";
+      display: block;
+      border-top: 1px solid transparent;
+      width: 8.5em;
+      height: 1px;
+      overflow: hidden;
+    }
+  }
+}
+
+h2, h3, h4, h5, h6 {
+  @include font-heading;
+}
+
+h1 {
+  @include font-title;
+  @include font-size(2);
+  margin-bottom: 0.5em;
+}
+h2 {
+  color: #444;
+  @include font-size(1.5);
+  margin: 0.5em 0 0.4em 0;
+}
+h3 {
+  color: #555;
+  @include font-size(1.2);
+  margin: 0.4em 0 0.3em 0;
+}
+h4 {
+  color: #666;
+  @include font-size(1.1);
+  margin: 0.3em 0 0.1em 0;
+}
+h5 {
+  @include font-size(1);
+  margin: 0.2em 0 0.1em 0;
+}
+h6 {
+  @include font-size(1);
+  margin: 0.2em 0 0.1em 0;
+}
+h2 + h3 {
+  padding-top: 0.4em;
+}
+
+.mw-category-generated h2 {
+  padding-bottom: 0.5em;
+}
+
+blockquote,
+div.poem p {
+  margin: 20px;
+  //@include quotedtext;
+  background-color: #eee;
+}
+
+blockquote,
+div.poem  {
+  position: relative;
+}
+
+blockquote,
+div.poem p,
+table.script {
+  // Display: table doet doet wat ik hoopte dat inline-block zou doen: Voorkomen 
+  // dat de achtergrond van het blok achter links uitgelijnde plaatjes valt.
+  display: table; 
+  margin: 0.5em 1em 0.5em 0;
+  @include quotedtext;
+  background-color: #f0f0f0;
+  background-image: url($path-image-paper);
+  //border: 1px solid #ccc;
+  border-right: none;
+  padding: 1em 25px;
+  min-width: 15em;
+}
+
+table.script th {
+  white-space: nowrap;
+}
+
+.floatright .mp3wrapper.boxed,
+.thumbcaption,
+.gallery {
+  @include rem(font-size, 0.90);
+  font-style: italic;
+}
+
+.thumb.tright table.infobox.vcard {
+  text-align: left; 
+//	@include rem(font-size, 0.95);
+  line-height: 1.5em;
+  
+  th {
+    font-weight: bold;
+  }
+}
+
+.verwijzingen,
+p {
+  @include wordwrap();
+}
+
+#mw-content-text {
+  //line-height: 1.5rem;
+  line-height: 130%;
+
+  p, 
+  blockquote,
+  div.poem {
+    padding-bottom: 0.8em;
+  }
+
+  li {
+    padding-bottom: 0.3em;
+  }
+  .toc {
+    display: inline-block;
+  }
+  .toc ul li {
+    @include list-item-undo;
+    padding-bottom: 0.2em;
+    padding-left: 10px;
+    
+    a {
+      text-decoration: none;
+      
+      .toctext:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .toc {
+    a {
+      display: table-row;
+      span {
+        display: table-cell;
+        padding: 0 0.5em 0.2em 0;
+      }
+    }
+    ul {
+      margin: 0.2em 0 0 0;
+    
+      li {
+        padding: 0 0 0.2em 10px;
+      }
+    }
+  }
+
+}
+.verwijzingen {
+  word-wrap: wrap-all;
+  
+}
+sup, sub, small {
+  font-size: 70%;
+}
+sup {
+  vertical-align: text-top;
+}
+
+sup.reference {
+  padding: 0 2px;
+}
+
+table.navigatie {
+  line-height: 130%;
+  th {
+    text-align: left;
+    vertical-align: top;
+    
+    &.header {
+      text-align: center;
+    }
+  }
+  td {
+    padding-bottom: 0.5em;
+    a {
+      display: inline-block; // Afbreken van een link voorkomen.
+    }
+  }
+}
+
+.pagefooter {
+  color: #999;
+}
+
+#mw-content-text {
+  .zieook,
+  .ontwar {
+    padding-bottom: 0.5em;
+    img {
+      margin: 0 10px 0 0;
+    }
+    div.floatleft {
+      float: left;
+      padding: 0;
+      margin: 0;
+      border: 0;
+    }
+    div,
+    p {
+      display: table-cell;
+      padding: 0;
+    }
+    &::after {
+      content: "";
+      display: block;
+      clear: left;
+    }
+  }
+}
+@include respond-to(handhelds){
+  // Ontwar-blokje bij elkaar houden als een normaal rechts uitgelijnd plaatje ineens links staat.
+  .zieook,
+  .ontwar {
+    clear: left;
+    .floatright + & {
+      padding-top: 1em;
+    }
+  }
+}
+
+.toelichting {
+  border-bottom: 1px dotted #8d8d8d;
+}
+
+@include respond-to(nothing){ // < nothing. Experiment om backlinks duidelijker en beter tapbaar te maken. Werkt nog niet goed.
+  sup.reference a {
+    &::before {
+      content: "\2193";
+      display: inline;
+    }
+  }
+  .mw-cite-backlink {
+    &, & * {
+      vertical-align: bottom;
+    }
+    font-size: 0;
+    & > * {
+      @include rem(font-size, 1.5);
+    }
+    sup {
+      @include rem(font-size, 1.5);
+    }
+    color: white;
+    sup,
+    & > a.internal
+    {
+      color: auto;
+      display: inline-block;
+      border: 1px solid #ccc;
+      background-color: #eee;
+      border-radius: 4px;
+      width: 1.2em;
+      height: 0.8em;
+      text-align: center;
+      margin-right: 0.2em;
+    }
+    sup a.internal
+    {
+      @include rem(font-size, 0.8);
+    }
+    & > a.internal
+    {
+      overflow: hidden
+    }
+
+    a.internal {
+      display: inline-block;
+      &::after{
+        content: ' ';
+        display: inline-block;
+      }
+    }
+  }
+}

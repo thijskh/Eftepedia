@@ -1,0 +1,9 @@
+#x{x:x;/*=RESPONSIVE_FULLWIDTHCONTAINERS=*/}
+// Grote blokken die altijd breed moeten zijn
+@include respond-to(wide-screens) {
+  #mw-data-after-content,
+  #editform,
+  div.breed {
+    width: $maxContentWidth;
+  }
+}

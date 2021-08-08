@@ -1,0 +1,41 @@
+// Gradient, algemeen.
+@mixin gradient-vertical($c1, $c2) { 
+  background-color: $c1;
+	background-image: linear-gradient(top, $c1, $c2);
+	background-image: -o-linear-gradient(top, $c1, $c2);
+	background-image: -moz-linear-gradient(top, $c1, $c2);
+	background-image: -webkit-linear-gradient(top, $c1, $c2);
+	background-image: -ms-linear-gradient(top, $c1, $c2);
+}
+
+@mixin gradient-vertical-3($c1, $p1, $c2, $p2, $c3, $p3) { 
+  background-color: $c2;
+	background-image: linear-gradient(top, $c1 $p1, $c2 $p2, $c3 $p3);
+	background-image: -o-linear-gradient(top, $c1 $p1, $c2 $p2, $c3 $p3);
+	background-image: -moz-linear-gradient(top, $c1 $p1, $c2 $p2, $c3 $p3);
+	background-image: -webkit-linear-gradient(top, $c1 $p1, $c2 $p2, $c3 $p3);
+	background-image: -ms-linear-gradient(top, $c1 $p1, $c2 $p2, $c3 $p3);
+}
+
+@mixin gradient-button($c1, $c2) { 
+  background-color: $c2;
+  $p: 60%;
+	background-image: linear-gradient(top, $c1 $p, $c2 $p);
+	background-image: -o-linear-gradient(top, $c1 $p, $c2 $p);
+	background-image: -moz-linear-gradient(top, $c1 $p, $c2 $p);
+	background-image: -webkit-linear-gradient(top, $c1 $p, $c2 $p);
+	background-image: -ms-linear-gradient(top, $c1 $p, $c2 $p);
+}
+
+// Specifieke gradients om te gebruiken.
+@mixin gradient-geel {
+  @include gradient-vertical(rgb(255, 223, 44), rgb(255, 184, 1));
+}
+
+@mixin gradient-geel-b {
+  @include gradient-button(rgb(255, 223, 44), rgb(255, 184, 1));
+}
+
+@mixin gradient-donker {
+  @include gradient-vertical(rgb(61, 61, 61), rgb(36, 36, 36));
+}

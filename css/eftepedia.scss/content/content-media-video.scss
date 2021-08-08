@@ -1,0 +1,38 @@
+#x{x:x;/*=CONTENT-MEDIA-VIDEOS=*/}
+iframe {
+	border-width: 0px;
+}
+
+.video-lightbox {
+	z-index: 1000;
+	background-color: rgba(0,0,0,0.5);
+}
+
+.video-play-button {
+	display: inline-block;
+	width: 60px;
+	height: 40px;
+	background-color: rgba(0,0,0,0.5);
+	position: absolute;
+	border-radius: 9px;
+	-webkit-transition: background-color 0.2s;
+	transition: background-color 0.2s;
+}
+
+a.video:hover .video-play-button {
+	background-color: #ffb801;
+	-webkit-transition: background-color 0.1s;
+	transition: background-color 0.1s;
+}
+
+.video-play-button-icon {
+	display: inline-block;
+	width: 0px; 
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 15px solid white;
+	position: absolute;
+	top: 10px;
+	left: 23px;
+}

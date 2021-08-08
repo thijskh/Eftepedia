@@ -1,0 +1,56 @@
+#x{x:x;/*=CONTENT-INHOUDSOPGAVE=*/}
+#mw-content-text {
+
+  .inhoudsopgave {
+    @include wide-block;
+    @include multi-column;
+    @include column-gap(1em);
+
+    .inhoudblok {
+      padding-bottom: 1em;
+      @include border-box;
+      break-inside: avoid-column;
+      -webkit-column-break-inside: avoid;
+      display: inline-block;
+      width: 100%;
+
+      & > ul {
+        padding: 10px;
+        border: 1px solid #ccc;
+        
+        @include respond-to(handhelds){
+          display: block;
+          
+          li {
+            padding-top: 0.7em;
+            padding-bottom: 0;
+          }
+          
+          ul {
+            display: block;
+            padding: 0;
+            margin: 0;
+          }
+        }
+        
+        
+        & > li {
+          @include list-item-undo;
+
+          & > a,
+          & > .redlink,
+          & > .redlinkworkaround {
+            @include font-content-bold;
+            letter-spacing:0.05em;
+            background-color: #eee;
+            display: block;
+            line-height: 1.5em;
+            margin-bottom: 0.5em;
+            text-align: center;
+            font-size: 120%;
+          }
+        }
+      }
+    }
+  }
+}

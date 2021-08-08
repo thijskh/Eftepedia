@@ -1,0 +1,92 @@
+#x{x:x;/*=CONTENT-INFOBOX=*/}
+.thumb table.infobox.vcard tr td,
+.thumb table.infobox.vcard tr th
+{
+  text-align: left;
+  padding: 0.1em 10px;
+  vertical-align: top;
+}
+
+.thumb.tright table.infobox.vcard {
+  border: 1px solid #ccc; 
+  background-color: #f9f9f9; 
+  text-align: left; 
+  @include rem(font-size, 0.95);
+  line-height: 1.5em;
+
+  //background-color: #FFFFAB;
+  min-width: 15em; 
+  width: 15em; // Dit zorgt dat de tabel zo klein mogelijk is rond de afbeelding.
+  position: relative;
+  @include respond-to(wide-screens) {
+    right: -20px; // -30 om de infobox op de rand te zetten
+  }
+  
+  th {
+    font-weight: bold;
+  }
+  margin-bottom: 1.5em;
+}
+
+@include respond-to(handhelds) {
+  .thumb.tright > table.infobox.vcard {
+    float: none;
+    min-width: 100%;
+  }
+}
+
+// Fixen van gat in border
+.thumb.tright table.infobox.vcard tbody {
+  //@include floatbox(right);
+  @include rounded-corner(top-left);
+  //border: 4px solid #FAE104; 
+  //border: 4px solid #555; 
+  display: block;
+  padding: 10px;
+}
+
+// Infobox header
+table.infobox.vcard tr th.fn.org{
+  @include font-heading;
+  position: relative;
+  font-size: 125%; 
+  text-align: center; 
+}
+
+.header {
+  background-color: $color-heading-default;
+}
+
+.attractie .header{
+  background-color: #7cc576;
+}
+.sprookjesbos .header{
+  background-color: #7cc576;
+}
+.laaf .header{
+  background-color: #aba000;
+}
+// Minimale breedte voor headers in infobox
+.infobox th:not([colspan='2']),
+.infobox td:not([colspan='2']) {
+  white-space: normal;
+  min-width: 8em;
+  overflow-wrap: break-word;
+}
+
+
+.thumb.tright table.infobox.vcard.attractie {
+  border: 1px solid #ccc; 
+  background-color: #f9f9f9; 
+  text-align: left; 
+  font-size: 88%; 
+  line-height: 1.5em;
+}
+
+@include respond-to(medium-and-wide-screens) {
+  .thumb.tright table.infobox.vcard.attractie {
+    width: unset; 
+    min-width: 20em; 
+    max-width: 20em; 
+  }
+}

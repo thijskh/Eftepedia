@@ -1,0 +1,22 @@
+#x{x:x;/*=CONTENT-COLUMN=*/}
+$i: 0;
+@include respond-to(wide-screens) {
+  @for $i from 1 through 5 {
+    .column-count-#{$i} {
+      column-count: $i;
+      -moz-column-count: $i;
+      -webkit-column-count: $i;
+    }
+  }
+}
+$w: 0;
+@include respond-to(medium-screens) {
+  @for $i from 1 through 5 {
+    $w: max(1, ceil($i / 2));
+    .column-count-#{$i} {
+      column-count: $w;
+      -moz-column-count: $w;
+      -webkit-column-count: $w;
+    }
+  }
+}

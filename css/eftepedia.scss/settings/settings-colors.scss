@@ -1,0 +1,26 @@
+// Basiskleuren
+$color-light-yellow: #ffdf2c;
+$color-dark-yellow: #ffb801;
+$color-menu-orange: #f4c859;
+$color-text-orange: #ff9a00;
+
+// Afgeleid van ffdf2c via http://www.colorschemer.com/online.html
+$color-blue: #2E4DFF;
+$color-blue-flat: #6B81FF;
+$color-orange: #FF772E;
+$color-blue-pale: #A8B5FF;
+$color-blue-light: #2EB6FF;
+$color-purple: #772EFF;
+
+// Toepassingen
+$color-listitem: $color-dark-yellow;
+$color-listitem-number: $color-dark-yellow;
+$color-link: $color-blue;
+$color-link-visited: $color-purple;//$color-blue-flat;
+
+$color-menu-text: $color-menu-orange;
+
+$color-admin-menu-text: #333;
+$color-admin-menu-edit-text: #666;
+
+$color-heading-default: $color-dark-yellow;

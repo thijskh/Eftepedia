@@ -1,0 +1,20 @@
+// "Root em". Basis fontgrootte. Factor t.o.v. standaard browser-font.
+// Standaard font (1) is ca 16px. 0.625 komt overeen met 10px. 
+$root-font-factor: 1;
+
+// Standaard fontgrootte instellen.
+html {
+  font-size: #{100% * $root-font-factor};
+}
+// Font-face definieren op basis van lokale bestanden.
+@mixin font-face($family, $file) {
+  font-family: $family;
+  src: url(fonts/#{$file}.eot);
+  src: url(fonts/#{$file}.eot?#iefix) format('embedded-opentype'),
+       url(fonts/#{$file}.woff) format('woff'),
+       url(fonts/#{$file}.ttf) format('truetype'),
+       url(fonts/#{$file}.svg#webfont) format('svg');
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:700&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,400italic,500,500italic,700,700italic&subset=latin,latin-ext);

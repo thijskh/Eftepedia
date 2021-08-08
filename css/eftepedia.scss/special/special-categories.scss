@@ -1,0 +1,13 @@
+#x{x:x;/*=SPECIAL_CATEGORIES=*/}
+  &.reader {
+    .mw-spcontent, .mw-category {
+      p,
+      form {
+        display: none;
+      }
+    }
+  }
+
+  .mw-category, .mw-spcontent {
+    @include multi-column;
+  }

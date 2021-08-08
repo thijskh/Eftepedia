@@ -1,0 +1,244 @@
+#x{x:x;/*=CONTENT-GENERAL=*/}
+hr {
+  clear: both;
+}
+
+ul {
+  li {
+    @include list-item;
+    padding-left: 0.3rem;
+  }
+}
+
+@include respond-to(handhelds){
+  // Op handhelds worden alle plaatjes en thumbs links gezet. Dat is kruimig i.c.m. de opsommingsblokjes.
+  // inline-block lost dat op, maar zorgt ook dat een opsomming (als er wat langere tekst in staat) veel 
+  // sneller gewrapt wordt tot onder het plaatje. Dat is niet zo erg, maar daarom wel alleen op mobiel.
+  // Op grotere schermen moet je geen opsomming naast een links uitgelijnd plaatje zetten.
+  // Als een kopje boven de opsomming mee moet wrappen, dan is het wellich handig om er een {{clear left mobiel}} voor te zetten
+  ul {
+    display: inline-block;
+  }
+}
+ul {
+  li.rood {
+    &:before {
+    background-color: red;
+    }
+  }
+}
+
+ul {
+  li.groen {
+    &:before {
+    background-color: green;
+    }
+  }
+}
+
+ul {
+  li.blauw {
+    &:before {
+    background-color: blue;
+    }
+  }
+}
+
+ol {
+	margin-left: 1.5em !important;
+	li {
+		counter-increment: list;
+		padding: 0 0 0 .5em;
+	}
+	li::marker {
+		content: counter(list) ".";
+		color: $color-listitem-number;
+	}
+}
+
+.center {
+  text-align: center;
+}
+
+@include respond-to(handhelds) {
+  .clear.left.mobiel {
+    clear: left;
+  }
+}
+@include respond-to(handhelds-and-medium-screens) {
+  p::before,
+  div.floatright + ul::before {
+    // Paragrafen en opsommingen onder plaatjes drukken als er te weinig ruime is
+    display: block;
+    overflow: hidden;
+    content: '';
+    width: 8em;
+  }
+}
+
+@include respond-to(medium-screens) {
+
+  .tright > *,
+  .floatright,
+  .floatright .thumb.t {
+    clear: right;
+    margin: 0em 0.5em 0.5em 10px;
+    float: right;
+    //position: relative;
+    right: -10px;
+    z-index: 1;
+  }
+
+}
+.tleft > *,
+.floatleft,
+.floatleft .thumb.t {
+  clear: left;
+  margin: 0em 0.8em 0.5em 0;
+  float: left;
+  //position: relative;
+  z-index: 1;
+}
+
+@include respond-to(wide-screens) {
+
+  .tright > *,
+  .floatright,
+  .floatright .thumb.t {
+    clear: right;
+    margin: 0em -240px 0.5em 10px;
+    float: right;
+    //position: relative;
+    right: -10px;
+    z-index: 1;
+  }
+  .video.floatnone,
+  .video.floatnone .thumb.t {
+    margin: 0;
+    float: none;
+  }
+  .video.floatleft {
+    margin: 10px 5px 10px 0; 
+    float: left;
+  }
+  .video.floatright {
+    margin: 10px 10px 10px 5px; 
+    float: right;
+  }
+
+  // Opheffen van dubbele negatieve marge bij geneste thumb blokken (bijv VideoGallery).
+  .thumb.tleft .thumb.t,
+  .thumb.tright .thumb.t {
+    margin-right: 0;
+  }
+
+  .tleft {
+    clear: left;
+    margin: 0em 10px 0.5em -20px;
+    float: left;
+    position: relative;
+    left: -10px;
+    z-index: 1;
+  }
+}
+
+.thumb .thumbinner{
+  padding: 0 0 0.2em 0;
+  background-color: white;
+}
+
+.mw-editsection {
+  display: none;
+}
+
+.magnify {
+  display: none;
+}
+
+.floatleft {
+  @include respond-to(medium-and-wide-screens) {
+    float: left;
+  }
+}
+#disambig {
+  td {
+    vertical-align: top;
+  }
+}
+
+.categories {
+
+  .catlinks {
+    margin: 1em 0;
+    padding: 0.8em;
+    @include full-border;
+    @include wide-block;
+    
+    & > div.mw-normal-catlinks > a,
+    ul {
+      display: inline-block;
+      margin-bottom: 0;
+      padding: 0.3em 0 0.1em 0;
+    }
+
+    ul {
+      @include list-undo;
+      padding-left: 1em;
+      
+      li {
+        @include list-item-undo;
+        display: inline;
+        padding-bottom: 0.2em;
+	border: 0;
+        
+        &:before {
+          content: ", ";
+          display: inline;
+          padding: 0 1em 0 0;
+          margin: 0;
+        }
+        &:first-child:before {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+table.navigatie {
+  display: block;
+  tbody {
+    display: table;
+    width: 100%;
+  }
+  margin: 1em 0;
+  border-collapse: separate;
+  border-spacing: 10px;
+  @include wide-block;
+  @include full-border;
+  th.header {
+    @include rounded-corner;
+    @include font-heading;
+  }
+}
+
+$_thumb_tright_thumbinner_border_color: #bbb;
+ 
+.thumb.tright,
+.thumb.tleft,
+.video.floatright,
+.video.floatleft {
+  .thumbinner {
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+ul {
+  margin-bottom: 0.5rem;
+}
+ul + ul {
+  margin-top: 1.5rem;
+}
+nav h5 {
+  line-height: 2rem;
+}

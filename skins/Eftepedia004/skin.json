@@ -1,0 +1,36 @@
+{
+	"name": "Eftepedia004",
+	"author": "Jos Visser, Thijs Kinkhorst",
+	"url": "https://www.eftepedia.nl",
+	"descriptionmsg": "eftepedia004-skin-desc",
+	"namemsg": "skinname-eftepedia004",
+	"license-name": "GPL-2.0+",
+	"type": "skin",
+	"ValidSkinNames": {
+		"eftepedia004": "Eftepedia004"
+	},
+	"AutoloadClasses": {
+		"SkinEftepedia004": "Eftepedia004.skin.php"
+	},
+	"MessagesDirs": {
+		"Eftepedia004": "i18n"
+	},
+	"ResourceModules": {
+		"skins.eftepedia004": {
+			"styles": {
+				"resources/screen.css": { "media": "screen" },
+				"resources/print.css": { "media": "print" }
+			}
+		},
+		"skins.eftepedia004.js": {
+			"scripts": [
+				"video.js"
+			],
+			"position": "top"
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "",
+		"remoteSkinPath": "Eftepedia004"
+	}
+}

@@ -1,0 +1,186 @@
+#x{x:x;/*=CONTENT-GALLERY=*/}
+#mw-content-text {
+  ul.gallery {
+    @include list-undo;
+    &.breed {
+      @include wide-block;
+    }
+    margin-left: -17px;
+
+    @include respond-to(wide-screens) {
+      display: table;
+    }
+    
+    p {
+      margin: 0;
+      padding: 0;
+      line-height: 110%;
+    }
+    
+    li {
+      // Standaard lijstopmaak ongedaan maken.
+      @include list-item-undo;
+
+      &.gallerycaption {
+        padding-left: 17px;
+      }
+      &.gallerybox {
+        display: inline-block;
+          
+        height: auto;
+        vertical-align: top;
+        //margin-right: -2px;
+        @include respond-to(medium-and-wide-screens) {
+          margin-left: -0.4em;
+          margin-right: -0.4em; 
+        }
+        padding: 0.3em 0; 
+        div.thumb { background-color: white; border: 0; } 
+        div.thumb div,
+        div.gallerytext,
+        div.gallerytext p {
+          text-align: center;
+        }
+
+      }
+      .gallerytext {
+        padding: 0 1em;
+      }
+    }
+    
+    .thumb {
+      margin: -7px auto; // Geen rem.
+    }
+    .gallerytext {
+      padding: 0 0.2em;
+    }
+  }
+
+
+  table.gallery {
+    
+    @include respond-to(wide-screens)
+    {
+      width: $normalContentWidth;
+    }
+    
+    &.breed {
+      @include wide-block;
+    }
+    
+    tbody {
+      display: inline-block;
+    }
+    .header {
+      td {
+        text-align: left;
+        font-weight: bold;
+        @include rem(padding, 0.5);
+        border-bottom: 1px solid #bbb;
+      }
+    }
+    
+    .item {
+      @include rem(margin-top, 0.5);
+      
+      display: inline-block;
+      
+      tr, td {
+        display: block;
+      }
+      
+      .image {
+        display: block;
+        td {
+          .center {
+            display: inline-block;
+            height: 100%;
+            text-align: center;
+            vertical-align: middle;
+  
+            .floatnone {
+              display: inline-block;
+            }
+          }
+        }
+        
+        a {
+          img {
+            vertical-align: bottom;
+          }
+        }
+      }
+      .caption {
+        div.caption {
+          @include imagecaption;
+          text-align: center;
+          overflow: auto;
+          height: auto;
+        }
+      }
+    }
+  }
+}
+
+@include respond-to(handhelds-and-medium-screens) {
+  #mw-content-text {
+    ul.gallery {
+      margin-left: 0px;
+      margin-right: -25px;
+      
+      li.gallerycaption {
+        padding-left: 0;
+      }
+
+      li.gallerybox {
+
+        margin-left: 0;
+        margin-right: -20px; // Minder extreme ruimte ertussen
+          
+        & div.thumb div,
+        & div.gallerytext,
+        & div.gallerytext p {
+          text-align: left;
+          padding: 0;
+          //margin-left: 0 !important;
+          //margin-right: 0 !important;
+          //margin: 1em 0 0.4em 0 !important;
+        }
+        & div.gallerytext {
+          @include wordwrap;
+          padding-right: calc(20px + 1em);
+        }
+      }
+    }
+  }
+}
+
+div.videogallery {
+  &.breed {
+    @include wide-block;
+  }
+}
+
+table.videogallery {
+
+  tr:first-child {
+    @include font-heading;
+    color: #666;
+  }
+
+  td {
+    margin-right: -2rem;
+    & > div {
+      display: inline-block;
+      vertical-align: top;
+      padding-right: 2rem;
+    }
+  }
+}
+
+li.gallerycaption {
+  @include font-heading;
+  color: #666;
+  font-size: 130%;
+  font-style: normal;
+}

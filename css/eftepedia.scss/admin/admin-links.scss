@@ -1,0 +1,44 @@
+#x{x:x;/*=ADMIN-LINKS=*/}
+a.quality { 
+	color: #00AA00; 
+}
+a.quality:visited {
+	color: #00AA00
+}
+
+a.category {
+	color: #0066CC;
+}
+a.category:visited {
+	color: #0066CC;
+}
+
+a.unapproved,
+a.outdated,
+a.rejected {
+	color: #CC6620;
+}
+a.unapproved:visited,
+a.outdated:visited,
+a.rejected:visited {
+	color: #CC6620;
+}
+
+a.outdated{
+	color: #CC3399;
+}
+a.outdated:visited{
+	color: #CC3399;
+}
+
+// Staat ook al hoger:
+a.new, #p-personal a.new {
+	color: #ba0000;
+}
+a.new:visited, #p-personal a.new:visited {
+	color: #ba0000;
+}
+
+a.mw-redirect {
+  font-style: italic;
+}

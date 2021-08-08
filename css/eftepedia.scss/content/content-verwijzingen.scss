@@ -1,0 +1,28 @@
+#x{x:x;/*=CONTENT-VERWIJZINGEN=*/}
+#mw-content-text {
+
+	.mw-references-wrap::before {
+		content: "Verwijzingen";
+		font-size: 90%;
+		font-weight: bold;
+		font-variant: small-caps;
+	}
+	.mw-references-wrap {
+		margin-top: 2ex;
+	}
+	.references {
+		font-size: 85%;
+		margin-left: 0;
+	}
+	.references > li {
+		color: #666;
+		margin-left: 1ex;
+	}
+}
+
+/* Dit is voor een los {{verwijsblok}} */
+.verwijzingenhead {
+		font-size: 90%;
+		font-weight: bold;
+		font-variant: small-caps;
+}

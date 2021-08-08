@@ -1,0 +1,29 @@
+@mixin wide-block {
+  @include respond-to(wide-screens)
+  {
+    // Margin opgeven i.p.v. width zorgt ervoor dat het element niet per se
+    // die volledige breedte in beslag zal namen. 
+    // met name voor tabellen is dat wel prettig. 
+    //width: $maxContentWidth;
+    margin-right: -$bodyRightPadding;
+  }
+  clear: both;
+}
+
+@mixin column-count($columns) {
+  column-count: $columns;
+  -moz-column-count: $columns;
+  -webkit-column-count: $columns;
+}
+
+@mixin multi-column()
+{
+  @include respond-to(wide-screens) {@include column-count(3);}
+  @include respond-to(medium-screens) {@include column-count(2);}
+}
+
+@mixin column-gap($gap) {
+  column-gap: $gap;
+  -moz-column-gap: $gap;
+  -webkit-column-gap: $gap;
+}

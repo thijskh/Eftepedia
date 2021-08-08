@@ -1,0 +1,44 @@
+@mixin list-item {
+  position: relative;
+  @include rem(padding-left, 2);
+
+  &::before {
+    content: "";
+    background-color: $color-listitem;
+    display: inline-block;
+    overflow: visible;
+    position: relative;
+    margin-left: -16px;
+    // Volgens mij zou margin-left + width + margin-right precies 0 moeten zijn. 
+    // Verschil van 3 pixels is niet verklaard, maar het werkt zo in FF, Chrome en IE, dus...
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;
+    margin-bottom: 3px;
+    border-radius: 2px;
+  }
+}
+
+// Standaardstijl van een list item ongedaan maken.
+@mixin list-item-undo {
+  padding: 0;
+  list-style: none;
+  
+  &::before {
+    content: none;
+    display: inline;
+    background-color: inherit;
+    font: inherit;
+    width: auto;
+    height: auto;
+    position: static;
+    top: 0;
+    left: 0;
+  }
+}
+
+// Standaardstijl van een unordered list ongedaan maken.
+@mixin list-undo {
+  padding: 0;
+}
+

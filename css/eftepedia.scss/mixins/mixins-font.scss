@@ -1,0 +1,43 @@
+// Opgeven van een relatieve fontgrootte.
+// Fontgrootte t.o.v. het basisfont. Factor van 1 is normale grootte, 2 is dubbel zo groot.
+@mixin font-size($factor) {
+  // Typische browser font size is 16 px. Op deze manier kunnen we een de 
+  // root-em grootte omrekenen naar pixels. Door deze waarde eerst te zetten,
+  // wordt de grootte eerst hard ingesteld voor oude browsers, en daarna 
+  // overschreven met de meer flexibele 'rem' waarde die door nieuwere browsers
+  // wordt ondersteund.
+  font-size: #{$factor * 16px * $root-font-factor};
+  font-size: #{$factor}rem;
+}
+
+
+
+// Font voor de site-titel.
+@mixin font-sitename {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+	font-size: 28pt;
+  //text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+}
+
+// Font voor de paginatitel (h1)
+@mixin font-title {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+}
+
+@mixin font-heading {
+  font-family: 'Roboto Slab', serif;
+  font-weight: 700;
+  line-height: 1;
+}
+
+@mixin font-content {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+}
+
+@mixin font-content-bold {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+}

@@ -1,0 +1,60 @@
+#x{x:x;/*=ADMIN-EDIT=*/}
+.mw-editsection {
+  @include font-content;
+  font-size: 1rem;
+  display: inline;
+
+  a {
+    color: darkgray !important;
+    &:before {
+      content: " "
+    }
+  }
+  
+  .mw-editsection-bracket {
+    display: none;
+  }
+}
+
+#editform {
+  clear: both;
+  textarea {
+    width: 100%;
+  }
+  #wpSummary {
+    max-width: 100%;
+  }
+}
+
+@include respond-to(handhelds) {
+  #editpage-copywarn {
+    display: none;
+  }
+  .editButtons {
+    #wpSave, #wpPreview, #wpDiff {
+      display: block;
+      margin: 1em;
+    }
+  }
+}
+
+.mw-editTools {
+  .specialbasic {
+    line-spacing: 0.3em;
+    a {
+      display: inline-block;
+      line-height: 1.2em;
+      @include respond-to(handhelds) {
+        line-height: 2em;
+      }
+      padding: 0.3em;
+      margin-bottom: 0.3em;
+      background-color: #eee;
+      border: 2px solid #ccc;
+      border-width: 0 2px 2px 0;
+      &:hover {
+        background-color: #ccf;
+      }
+    }
+  }
+}

@@ -1,0 +1,62 @@
+#x{x:x;/*=SPECIAL_GEO=*/}
+.dialog {
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.1);
+  
+  @include respond-to(handhelds) {
+    background-color: white;
+  }
+}
+
+@include respond-to(handhelds) {
+  body.geosearch .mainmenu .secondary {
+    display: none;
+  }
+}
+
+.mainmenu .navbar a {
+  position: relative;
+}
+
+.mainmenu {
+  text-align: right;
+}
+ul.geosearch {
+  background-color: white;
+  position: absolute;
+  top: 100%;
+  z-index: 1001;
+  
+  @include rounded-corner("");
+  
+  @include respond-to(handhelds) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  li {
+    padding: 0;
+    text-align: left;
+  }
+  li::before {
+    display: none;
+  }
+  a {  
+    white-space: nowrap;
+    display: block;
+    padding: 1em;
+    color: #000;
+  }
+  a:hover {
+    color: #000;
+    background-color: $color-light-yellow;
+  }
+}

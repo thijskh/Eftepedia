@@ -1,0 +1,74 @@
+#x{x:x;/*=APPS_MAPS=*/}
+.mapsupport {
+  @import "apps_maps_ribbon";
+
+  .mapapp {
+    position: relative;
+    border: 1px solid transparent; // Nodig voor marge/hoogte-truc?
+  }
+
+  .mapapp::after {
+    content: '';
+    display: block;
+    margin-top: 100%; // Kaart altijd even hoog als breed
+  }
+  .map {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+  }
+
+  .layers {
+    transform-origin: 0 0;
+    position: absolute;
+    background-position: 0 0;
+    top: 0;
+    left: 0;
+    // Ziet er beter uit, maar werkt niet omdat posities van de elementen uitgelezen worden.  
+    // transition: 0.1s ease-in-out;
+  }
+  .layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+  
+  .landmark {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border: 3px solid red;
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px #333;
+  }
+  
+  .mapapp .toolbar {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 10;
+    .navbutton {
+      text-align: center;
+      padding: 0;
+      font-size: 120%;
+      width: 1.8em;
+      height: 1.8em;
+      vertical-align: top;
+    }
+  }
+  
+  .mapapp .toolbar.nav {
+    bottom: 10px;
+    right: 10px;
+  }
+  
+  .mapapp .toolbar.mapselect {
+    left: 10px;
+    top: 10px;
+    width: 1em;
+  }
+}

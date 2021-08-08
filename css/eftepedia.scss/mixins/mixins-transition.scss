@@ -1,0 +1,14 @@
+// Short-hand voor transition.
+@mixin transition($transition) {
+  -webkit-transition: #{$transition};
+  -moz-transition: #{$transition};
+  -o-transition: #{$transition};
+  transition: #{$transition};
+}
+
+@mixin transition-all {
+  -webkit-transition: top,height 0.3s ease-in-out;
+  -moz-transition: top,height 0.3s ease-in-out;
+  -o-transition: top,height 0.3s ease-in-out;
+  transition: top,height 0.3s ease-in-out;
+}

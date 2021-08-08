@@ -1,0 +1,10 @@
+#x{x:x;/*=CONTENT-IMAGE=*/}
+.contentpage.ns-file {
+  #mw-content-text {
+    @include wide-block;
+    border-bottom: 1px solid #ccc;
+    #file.fullImageLink {
+      margin-bottom: 0.5em;
+    }
+  }
+}

@@ -1,0 +1,183 @@
+#x{x:x;/*=ADMIN-NAVMENU=*/}
+&.ns-special #p-cactions {
+  display: none;
+}
+  
+$portlets-left: 110px;
+nav.portals {
+  ul {
+    a {
+      color: $color-admin-menu-text;
+    }
+    .selected a {
+      font-weight: bold;
+    }
+    .new a {
+      color: red;
+    }
+  }
+}
+@include respond-to(wide-screens) {
+  nav.portals {
+    position: absolute;
+    top: 7px;
+    left: $portlets-left;
+
+    .portlet {
+      vertical-align: top;
+      display: inline-block;
+      margin-right: 1em;
+      margin: 0;
+      padding: 0 0.5rem;
+      line-height: 2rem;
+      
+      h5 {
+        text-align: center;
+      }
+      ul {
+        display: none;
+      }
+    }
+    
+    #p-cactions {
+      
+      width: 0;
+      padding: 0;
+      color: transparent;
+      
+      .pBody {
+        z-index: 1;
+        display: block;
+        position: absolute;
+        top: 102px;
+        left: $bodyLeftMargin - $portlets-left;
+        width: $maxContentWidth;
+        ul {
+          display: block;
+          padding: 0;
+          li {
+            display: inline-block;
+            padding: 0;
+            &:before {
+              display: none;
+            }
+            a {
+              line-height: 1em;
+              padding: 0 0.5rem;
+              color: $color-admin-menu-edit-text;
+              
+              &:first-child {
+                padding-left: 0;
+              }
+            }
+            &.new a {
+              color: red;
+            }
+          }
+        }
+      }
+    }
+    
+    .portlet:hover:not(#p-cactions) {
+
+      &,
+      ul {
+        @include rounded-corner("");
+      }
+      ul {
+        z-index: 2;
+        @include gradient-donker;
+        color: $color-menu-text;
+        padding: 0.4rem 0.8rem;
+        display: block;
+        position: absolute;
+        top: 2rem;
+        
+        li {
+          padding: 0;
+          &:before {
+            display: none;
+          }
+        }
+        
+        a {
+          line-height: 1.5em;
+          display: block;
+          color: $color-menu-text;
+        }
+      }
+    }
+  }
+}
+
+@include respond-to(handhelds-and-medium-screens) {
+
+  #logo {
+    left: 50px;
+  }
+
+  .menubutton {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    &::before {
+      @include rounded-corner("");
+      @include gradient-donker;
+      display: block;
+      position: absolute;
+      content: "\2630";
+      font-size: 3rem;
+      color: $color-menu-text;
+      width: 44px;
+      height: 44px;
+      left: 0;
+      top: 0;
+      text-align: center;
+      z-index: 950;
+    }
+  }
+  &.menu {
+    .menubutton:after {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 1000px;
+      height: 1000px;
+      z-index: 900;
+      background-color: white;
+      opacity: 0.5;
+    }
+  }
+
+  nav.portals {
+    display: none;
+  }
+  &.menu {
+    nav.portals {
+      display: block;
+      font-size: 130%;
+      position: absolute;
+      @include gradient-donker;
+      z-index: 1000; 
+
+      padding: 1rem;  
+      color: white;
+      
+      .portlet {
+        //display: inline-block;
+        vertical-align: top;
+        padding-right: 3em;
+      }
+      
+      a {
+        color: $color-menu-text;
+      }
+      
+      h5,
+      li {
+        padding-bottom: 0.4rem;
+      }
+    }
+  }
+}

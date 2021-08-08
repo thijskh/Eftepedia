@@ -1,0 +1,99 @@
+#x{x:x;/*=SPECIAL_ALLPAGES=*/}
+.special-AllePaginas {
+
+  // Alle pagina's index
+  &.reader  {
+    .namespaceoptions {
+      display: none
+    }
+  }
+  
+  .pagenav {
+    padding: 0.5rem 0;
+   
+    .prev {
+      display: block;
+      float: left;
+      overflow: hidden;
+      &:before {
+        content: "\227A\00A0";
+      }
+    }
+    .next {
+      display: block;
+      float: right;
+      overflow: hidden;
+      &:after {
+        content: "\00A0\227B";
+      }
+    }
+    overflow: auto;
+  }
+    
+  .allpageslist.chunk {
+    @include multi-column;
+
+    h3 {
+      height: 0;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      border-top: 1px solid #eee;
+      
+      span {
+        @include indexletter;
+      }
+    }
+    
+    li {
+      margin-left: 30px;
+    }
+  }
+
+  .allpageslist.index {
+    
+    ul {
+      display: table;
+      
+      li {
+        display: table-row;
+        &:before {
+          display: none;
+        }
+        
+        a,
+        span {
+          display: table-cell;
+          text-align: left;
+          padding: 0.2em 1em;
+          
+          &.mw-allpages-alphaindexline {
+            text-align: right;
+          }
+        }
+        a:first-child {
+          text-align: right;
+        }
+      }
+    }
+  }
+  
+  // Alle pagina's detail-lijst
+  #column-content {
+    
+    .mw-allpages-table-chunk {
+      td a {
+        @include list-item;
+      }
+      td
+      {
+        @include list-item;
+        vertical-align: bottom;
+        &:before {
+          background-color: #ddd;
+          top: 0.4em;
+        }
+      }
+    }
+  }
+}

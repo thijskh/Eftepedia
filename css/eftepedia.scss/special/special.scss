@@ -1,0 +1,10 @@
+@import "special-allpages";
+@import "special-categories";
+@import "special-search";
+@import "special-geo";
+
+html.ns-special {
+  #bodyContent {
+    @include wide-block;
+  }
+}

@@ -1,0 +1,10 @@
+#x{x:x;/*=ADMIN=*/}
+html.admin {
+  @import "admin-links";
+  @import "admin-tools";
+  @import "admin-navmenu";
+  @import "admin-diff";
+  @import "admin-edit"; 
+  @import "admin-flaggedrevs";
+  @import "admin-special";
+}

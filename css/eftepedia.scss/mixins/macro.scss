@@ -1,0 +1,73 @@
+#x{x:x;/*=MACRO=*/}
+// Rommel hieronder uitzoeken. Zou langzaamaan uitgefaseerd moeten worden.
+
+@mixin _fold() {
+	content: "";
+	position: absolute;
+	width: 0;
+	height: 1px;
+	border-top: 5px solid transparent;
+	top: -7px;
+}
+
+@mixin fold($side) {
+	@include_fold;
+	border-#{if($side == "right", "left", "right")}: 10px solid $fold_color;;
+	#{$side}: -1px;
+}
+
+@mixin shadow($offsetLeft, $offsetTop, $blur, $spread, $color) {
+	-moz-box-shadow:    $offsetLeft $offsetTop $blur $spread $color;
+	-webkit-box-shadow: $offsetLeft $offsetTop $blur $spread $color;
+	box-shadow:         $offsetLeft $offsetTop $blur $spread $color;
+}
+
+@mixin shadowDropBelow() {
+	@include shadow(0px, 8px, 5px, -6px, #ccc);
+}
+
+@mixin shadowDropBelowRight() {
+	@include shadow(-2px, 10px, 5px, -8px, #ccc);
+}
+	
+// Zwevend blok
+@mixin floatbox($side) {
+	border-bottom: 1px solid #dfcd4a; 
+	border-right: 1px solid #dfcd4a; 
+	border-top: 1px solid white; 
+	border-left: 1px solid white;
+
+	@include shadowDropBelowRight();
+	
+	&:before {
+		@include fold($side);
+    z-index: -1; // Soms is er een verschuiving van een pixel. Op deze manier 'vouwt' ie altijd achter de pagina.
+	}
+}
+
+@mixin floatbox-b($side) {
+	border-bottom: 1px solid #666; 
+	border-right: 1px solid #666; 
+	border-top: 1px solid #dfcd4a; 
+	border-left: 1px solid #dfcd4a;
+
+	@include shadowDropBelowRight();
+	
+	&:before {
+		@include fold($side);
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
