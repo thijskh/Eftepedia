@@ -417,7 +417,7 @@ class Eftepedia004Template
   {
 ?>
   <div class="portlet" id="p-personal">
-		<h5><?php $this->msg('personaltools') ?></h5>
+		<h5>Ikzelf</h5>
 		<div class="pBody">
 			<ul<?php $this->html('userlangattributes') ?>>
 <?php		foreach($this->getPersonalTools() as $key => $item) { ?>
