@@ -78,6 +78,25 @@
     border-width: 0 1em 0.5em 0;
   }
   
+  .afbeeldinggezocht {
+    img {
+      max-width: 32px !important;
+      margin-top: 3px;
+      margin-left: 3px;
+    }
+    .thumbcaption {
+      width: 150px;
+      text-align: center !important;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .thumb {
+      float: right;
+    }
+    .thumbinner {
+      border: 1px solid #ccc;
+    }
+  }
   // Zorgen dat bij erg brede afbeeldingen tenminste de caption binnen beeld blijft.
   .thumbinner {
     max-width: 100%;
