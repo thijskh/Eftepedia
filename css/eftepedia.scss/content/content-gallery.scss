@@ -163,7 +163,7 @@ div.videogallery {
 
 table.videogallery {
 
-  tr:first-child {
+  tr.gallerycaption {
     @include font-heading;
     color: #666;
   }
