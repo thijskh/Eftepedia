@@ -20,7 +20,7 @@ $(function(){
 			
 			return isAndroid;
 		}
-		
+
 		// Function for updating the playing state of the iframe player.
 		var updatePlay = function() {
 			if (!loaded) return;
@@ -45,7 +45,7 @@ $(function(){
 		// Create a new placeholder for the video.
 		var $placeholder = $(document.createElement('a'))
 			.prependTo($(parent))
-			.attr('href', this.src)
+			.attr('href', $(this).parents('.nolightbox').length ? 'https://www.youtube.com/watch?v=' + video : this.src)
 			.addClass('video youtube')
 			.css({
 				'width': width + 'px',
@@ -56,7 +56,7 @@ $(function(){
 				'position': 'relative'
 			})
 			.on('click', function(event) {
-				if (isNoAutoPlayBrowser()) 
+				if ($(this).parents('.nolightbox').length || isNoAutoPlayBrowser()) 
 					return;
 				event.preventDefault();
 				$lightbox.css('display', 'block');
