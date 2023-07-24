@@ -1,0 +1,12 @@
+
+table.listfiles, .listfiles caption, .listfiles tbody, .listfiles tfoot, .listfiles tr, .listfiles th, .listfiles td {
+    all: unset !important;
+}
+
+.listfiles thead {
+  display: none;
+}
+
+.TablePager_col_thumb img {
+  padding: 10px;
+}

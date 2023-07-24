@@ -22,6 +22,7 @@ function isAllowedSpecialPage($title)
 		'Zoeken'=>true, 
 		'SphinxSearch'=>true, 
 		'AllePaginas'=>true,
+		'Bestandenlijst'=>true,
 		'Willekeurig'=>true,
     'Categorieën'=>true,
     'Categorie%C3%ABn'=>true,
@@ -67,7 +68,7 @@ $wgHooks['BeforeInitialize'][] = 'isAllowedPage';
 /* *********************************************************************** **
 Overriden van speciale pagina's. Ze moeten ook in de lijst met uitzonderingen staan.
 ** *********************************************************************** */
-$pageOverrides = array('SpecialRecentChanges', 'SpecialAllPages', 'ImagePage');
+$pageOverrides = array('SpecialRecentChanges', 'SpecialAllPages', 'ImagePage', 'SpecialListFiles', 'ReaderImageListPager');
 foreach ($pageOverrides as $pageKey)
 {
 	$wgAutoloadLocalClasses[$pageKey] = 'eftepedia_reader/includes/' . $pageKey . '.php';
