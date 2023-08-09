@@ -201,8 +201,9 @@ class ImagePage extends Article {
 		$this->imageDupes();
 		# @todo FIXME: For some freaky reason, we can't redirect to foreign images.
 		# Yet we return metadata about the target. Definitely an issue in the FileRepo
+ */
 		$this->imageLinks();
-
+/*
 		# Allow extensions to add something after the image links
 		$html = '';
 		Hooks::run( 'ImagePageAfterImageLinks', [ $this, &$html ] );
