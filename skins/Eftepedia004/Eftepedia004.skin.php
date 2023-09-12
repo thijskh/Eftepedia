@@ -14,7 +14,7 @@ if( !defined( 'MEDIAWIKI' ) ){
 	die( -1 );
 }
  
-define('GEELCSSVERSION', '036');
+define('GEELCSSVERSION', '038');
 
 class EftepediaHackOutput
 {
@@ -342,7 +342,7 @@ class Eftepedia004Template
   <a href="<?=$baseUrl?>/Colofon" title="Colofon" rel="author" class="p-author">Colofon</a> &bull;
   <a href="mailto:feedback@HAALDITWEG.eftepedia.nl" title="E-mail ons" class="email u-email">E-mail</a> &bull;
   <script>var el = document.querySelector('a.email.u-email'); var m = el.href.replace('HAALDITWEG.', ''); el.href = m;</script>
-  <a href="https://twitter.com/eftepedia" target="_blank" title="Eftepedia op Twitter" class="u-twitter">Twitter</a> &bull;
+  <a href="https://x.com/eftepedia" target="_blank" title="Eftepedia op X" class="u-twitter">Volg ons op '&Xopf;'</a> &bull;
   <span class="note p-note">Eftepedia is niet gelieerd aan de Efteling</span>
 </footer>
 
