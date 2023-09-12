@@ -1,6 +1,8 @@
 #x{x:x;/*=SPECIAL_CATEGORIES=*/}
   &.reader {
-    .mw-spcontent, .mw-category {
+    .mw-spcontent, 
+    .mw-htmlform-ooui-wrapper,
+    .mw-category {
       p,
       form {
         display: none;
@@ -8,6 +10,24 @@
     }
   }
 
-  .mw-category, .mw-spcontent {
+  .mw-category, 
+  .mw-spcontent ul {
     @include multi-column;
+    margin: 1em 0 0.5em 0;
   }
+
+.mw-htmlform-ooui-wrapper { // Zoek-blokje op Speciaal:Categorieën
+
+  .oo-ui-fieldsetLayout.oo-ui-labelElement > .oo-ui-fieldsetLayout-header { // Header verbergen
+    display: none;
+  }
+
+  // Elementen achter elkaar, compacter
+  div,
+  .oo-ui-fieldLayout.oo-ui-fieldLayout-align-top > .oo-ui-fieldLayout-body > .oo-ui-fieldLayout-field,
+  .oo-ui-fieldLayout.oo-ui-fieldLayout-align-top > .oo-ui-fieldLayout-body > .oo-ui-fieldLayout-header,
+  label {
+    display: inline-block;
+    padding: 0 0.1rem 0 0;
+  }
+}

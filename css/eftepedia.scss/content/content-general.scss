@@ -5,7 +5,7 @@ hr {
 
 ul {
   li {
-    @include list-item;
+    @include list-item2;
     padding-left: 0.3rem;
   }
 }
@@ -50,6 +50,15 @@ ol {
 		counter-increment: list;
 		padding: 0 0 0 .5em;
 	}
+
+	/* Safari does not support ::marker content(), so use workaround there */
+	@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+		li::before {
+			content: counter(list) ". ";
+			color: $color-listitem-number;
+		}
+	}
+	/* All reasonable browsers: */
 	li::marker {
 		content: counter(list) ".";
 		color: $color-listitem-number;

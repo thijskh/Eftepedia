@@ -206,9 +206,11 @@ table.navigatie {
   }
   td {
     padding-bottom: 0.5em;
-    a {
-      display: inline-block; // Afbreken van een link voorkomen.
-    }
+  }
+}
+table.navigatie:not(.newscontainer) {
+  td a {
+      display: inline-flex; // Afbreken van een link voorkomen.
   }
 }
 

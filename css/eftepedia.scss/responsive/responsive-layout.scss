@@ -43,7 +43,20 @@
     max-width: 100% !important;
     height: auto !important;
   }
+
+  // Editbuttons wat ruimte geven
+  body #toolbar {
+    & * {
+       // knoppen hebben pixel-maten die met de plaatjes overeenkomen (22x23px)
+       transform: scale(1.5);
+       transform-origin: left top;
+       margin-right: 16px;
+       margin-bottom: 16px;
+    }
+    height: auto;
+  }
 }
+
 // Style voor kleine apparaten (telefoons)
 @include respond-to(handhelds) {
   img.icon,
@@ -57,11 +70,6 @@
   // Enkele admin tools. 
   html.admin #contentSub #mw-fr-revisiontag {
     position: static;
-  }
-  
-  // Editbuttons wat ruimte geven.
-  #editform .mw-toolbar-editbutton {
-    padding: 0.5rem;
   }
   
   .thumb.tright .infobox.vcard {
