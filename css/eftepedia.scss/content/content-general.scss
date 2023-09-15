@@ -65,6 +65,10 @@ ol {
 	}
 }
 
+#mw-content-text li {
+ page-break-inside: avoid;
+}
+
 .center {
   text-align: center;
 }
