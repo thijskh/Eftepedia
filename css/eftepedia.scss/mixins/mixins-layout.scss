@@ -12,8 +12,6 @@
 
 @mixin column-count($columns) {
   column-count: $columns;
-  -moz-column-count: $columns;
-  -webkit-column-count: $columns;
 }
 
 @mixin multi-column()

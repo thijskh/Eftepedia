@@ -4,8 +4,6 @@ $i: 0;
   @for $i from 1 through 5 {
     .column-count-#{$i} {
       column-count: $i;
-      -moz-column-count: $i;
-      -webkit-column-count: $i;
     }
   }
 }
@@ -15,8 +13,6 @@ $w: 0;
     $w: max(1, ceil($i / 2));
     .column-count-#{$i} {
       column-count: $w;
-      -moz-column-count: $w;
-      -webkit-column-count: $w;
     }
   }
 }
