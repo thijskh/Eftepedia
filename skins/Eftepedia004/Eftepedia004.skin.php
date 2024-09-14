@@ -14,7 +14,7 @@ if( !defined( 'MEDIAWIKI' ) ){
 	die( -1 );
 }
  
-define('GEELCSSVERSION', '042');
+define('GEELCSSVERSION', '043');
 
 class EftepediaHackOutput
 {

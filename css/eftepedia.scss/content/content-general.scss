@@ -67,8 +67,11 @@ ol {
 
 #mw-content-text li {
  page-break-inside: avoid;
+}
+#mw-content-text ul li {
  display: flow-root;
 }
+
 
 .center {
   text-align: center;
