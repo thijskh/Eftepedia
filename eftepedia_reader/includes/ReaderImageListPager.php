@@ -47,6 +47,9 @@ class ReaderImageListPager extends ImageListPager {
 
         $qi['join_conds']['gw_imagelinks'] = ['JOIN', 'img_name = il_to'];
         $qi['join_conds']['gwl_page'] = ['JOIN', 'il_from=page_id AND il_from_namespace=page_namespace'];
+        // Only show images for which the page has also been updated,
+        // i.e.: the revision that added them is actually approved
+        $qi['conds'] = 'img_timestamp <= page_touched';
 
         return $qi;
     }
