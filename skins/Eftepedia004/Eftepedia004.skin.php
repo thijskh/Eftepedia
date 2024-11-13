@@ -232,6 +232,7 @@ class Eftepedia004Template
 <meta name="keywords" content="Efteling,<?=htmlspecialchars($this->data['title'])?>">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="fediverse:creator" content="@Eftepedia@opencoaster.net">
 <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.php" title="Eftepedia">
 <?php	
     if ($isAdmin) {
@@ -342,7 +343,8 @@ class Eftepedia004Template
   <a href="<?=$baseUrl?>/Colofon" title="Colofon" rel="author" class="p-author">Colofon</a> &bull;
   <a href="mailto:feedback@HAALDITWEG.eftepedia.nl" title="E-mail ons" class="email u-email">E-mail</a> &bull;
   <script>var el = document.querySelector('a.email.u-email'); var m = el.href.replace('HAALDITWEG.', ''); el.href = m;</script>
-  <a href="https://x.com/eftepedia" target="_blank" title="Eftepedia op X" class="u-twitter">Volg ons op '&Xopf;'</a> &bull;
+  Volg ons <a href="https://x.com/eftepedia" target="_blank" title="Eftepedia op X" class="u-twitter">op &Xopf;</a> of 
+  <a href="https://opencoaster.net/@Eftepedia" target="_blank" title="Eftepedia op Mastodon" rel="me" class="u-twitter">op Mastodon</a> &bull;
   <span class="note p-note">Eftepedia is niet gelieerd aan de Efteling</span>
 </footer>
 
