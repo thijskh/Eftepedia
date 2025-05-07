@@ -26,7 +26,7 @@ class EftepediaMaps {
         'gt_page_id', 'gt_primary', 'gt_lat', 'gt_lon', 'gt_dim', 'gt_type', 'gt_name', 
         'page_title'), // fields
       array('gt_page_id=page_id',
-      "page_title='" . $title->getDBKey() . "'") // conditions + joins
+      "page_title=" . $dbr->addQuotes($title->getDBKey())) // conditions + joins
     );
     while ($landmark = $result->fetchObject()) {
       $landmarks[] = $landmark;
