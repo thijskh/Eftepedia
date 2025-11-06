@@ -1,0 +1,40 @@
+#!/usr/bin/php -q
+<?php
+
+require('/srv/www/eftepedia//GeelWikiSettings.php');
+$dsn = "mysql:host=$wgDBserver;dbname=$wgDBname;charset=UTF8";
+
+// Define here SQL queries which result in pages needing
+// attention.
+$sqls = [
+	// Duplicate (sha1) images
+	'img_dupes' => 'SELECT img_name FROM gw_image GROUP BY img_sha1 HAVING count(*)>1',
+	// Pages in reader view with broken images
+	'img_broken' => 'SELECT il_to,il_from AS `title`,COUNT(*) AS `value`,gwl_page.page_title FROM `gw_imagelinks` LEFT JOIN `gw_page` ON ((il_to = page_title) AND page_namespace = "6") LEFT JOIN `gwl_page` ON (il_from = gwl_page.page_id) LEFT JOIN `gw_redirect` ON ((gw_page.page_id = rd_from) AND rd_namespace = 6 AND rd_interwiki = "") LEFT JOIN `gw_image` `img1` ON ((il_to = img1.img_name)) LEFT JOIN `gw_image` `img2` ON ((rd_title = img2.img_name))   WHERE img1.img_name IS NULL AND img2.img_name IS NULL AND gwl_page.page_namespace = 0 GROUP BY il_to ORDER BY value DESC,title',
+	// Pages including nonexistent templates
+	'template_broken' => 'SELECT tl_namespace AS `namespace`,tl_title AS `title`,COUNT(*) AS `value`  FROM `gw_templatelinks` LEFT JOIN `gw_page` ON ((page_namespace = tl_namespace) AND (page_title = tl_title))   WHERE (page_title IS NULL) AND tl_namespace = 10 GROUP BY tl_namespace,tl_title ORDER BY value DESC,namespace,title',
+	// Broken redirects
+	'redirect_broken' => 'SELECT p1.page_namespace AS `namespace`,p1.page_title AS `title`,rd_namespace,rd_title,rd_fragment  FROM `gw_redirect` JOIN `gw_page` `p1` ON ((rd_from=p1.page_id)) LEFT JOIN `gw_page` `p2` ON ((rd_namespace=p2.page_namespace) AND (rd_title=p2.page_title))   WHERE (rd_namespace >= 0) AND (rd_interwiki IS NULL OR rd_interwiki = "") AND (p2.page_namespace IS NULL)  ORDER BY rd_namespace,rd_title,rd_from',
+	// Citation errors on published pages
+	'cite_broken' => 'SELECT cl_sortkey FROM gw_categorylinks LEFT JOIN gwl_page ON (cl_from=page_id) WHERE cl_to = "Pagina\'s_met_referentiefouten" AND page_title IS NOT NULL',
+];
+
+try {
+	$pdo = new PDO($dsn, $wgDBuser, $wgDBpassword);
+	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+	if ($pdo) {
+		foreach($sqls as $desc => $q) {
+			$res = $pdo->query($q);
+			if($res->rowCount() > 0) {
+				print "$desc:\n";
+				while($row = $res->fetch(PDO::FETCH_ASSOC)) {
+					print " - " . implode("\t", $row) . "\n";
+				}
+				print "\n";
+			}
+		}
+	}
+} catch (PDOException $e) {
+	echo $e->getMessage();
+}
